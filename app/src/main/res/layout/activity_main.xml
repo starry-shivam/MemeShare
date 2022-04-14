@@ -30,16 +30,17 @@
         android:id="@+id/shareButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:layout_marginRight="2dp"
+        android:background="@color/red_2"
+        android:foreground="?android:attr/selectableItemBackground"
         android:onClick="shareMeme"
         android:padding="32dp"
         android:text="@string/share"
-        android:textSize="20sp"
         android:textColor="@color/white"
-        android:layout_marginRight="2dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/guideline2"/>
+        app:layout_constraintRight_toLeftOf="@id/guideline2" />
 
     <Button
         android:id="@+id/nextButton"
@@ -53,7 +54,8 @@
         android:onClick="nextMeme"
         android:textSize="20sp"
         android:layout_marginLeft="2dp"
-        android:background="@color/purple_500"
+        android:background="@color/red_2"
+        android:foreground="?android:attr/selectableItemBackground"
         android:textColor="@color/white"/>
 
     <androidx.constraintlayout.widget.Guideline

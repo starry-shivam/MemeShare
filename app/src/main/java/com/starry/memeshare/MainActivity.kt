@@ -13,21 +13,22 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import kotlinx.android.synthetic.main.activity_main.*
+import com.starry.memeshare.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityMainBinding
     private var currentImageUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         loadMeme()
     }
 
     private fun loadMeme() {
         // show loading progress bar.
-        progressBar.visibility=View.VISIBLE
+        binding.progressBar.visibility=View.VISIBLE
         // meme api url.
         val url = "https://meme-api.herokuapp.com/gimme"
         // create JSON request object.
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                         target: Target<Drawable>?,
                         isFirstResource: Boolean
                     ): Boolean {
-                        progressBar.visibility=View.GONE
+                        binding.progressBar.visibility=View.GONE
                         return false
                     }
 
@@ -60,24 +61,24 @@ class MainActivity : AppCompatActivity() {
                         dataSource: DataSource?,
                         isFirstResource: Boolean
                     ): Boolean {
-                        progressBar.visibility=View.GONE
+                        binding.progressBar.visibility=View.GONE
                         return false
                     }
-                }).into(memeImageView)
+                }).into(binding.memeImageView)
             },
             {   // if we fail to show image, show this message as toast.
                 Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_LONG).show()
             }
         )
-        // add json request in volly's request queue.
+        // add json request in volley's request queue.
        VollySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
     fun shareMeme(view: View) {
-        val intent= Intent(Intent.ACTION_SEND)
-        intent.type="text/plain"
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type ="text/plain"
         intent.putExtra(Intent.EXTRA_TEXT,"Hey! Checkout this cool meme. $currentImageUrl")
-        val chooser=Intent.createChooser(intent,"Share this using ...")
+        val chooser = Intent.createChooser(intent,"Share this using...")
         startActivity(chooser)
     }
 
