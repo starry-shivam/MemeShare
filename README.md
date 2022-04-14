@@ -1,10 +1,10 @@
 <h1 align="center">Meme Share</h1>
 
-A very simple Android app which shows you random nemes with the help of [meme-api](https://github.com/D3vd/Meme_Api) which you can share with your friends!
+A very simple Android app which shows you random memes with the help of [meme-api](https://github.com/D3vd/Meme_Api) which you can share with your friends!
 
 <b>Tech stack</b>
-- 100% wirtten in [Kotlin](https://kotlinlang.org/).
-- [Volly](https://google.github.io/volley/) library for making API calls.
+- 100% written in [Kotlin](https://kotlinlang.org/).
+- [Volley](https://google.github.io/volley/) library for making API calls.
 - [Glide](https://github.com/bumptech/glide) library loading images into ImageView.
 
 <b>Screenshots</b>
